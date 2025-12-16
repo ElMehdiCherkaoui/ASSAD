@@ -1,3 +1,51 @@
+<?php
+require_once "../config.php";
+session_start();
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
+
+    if (empty($email) || empty($password)) {
+        $error = "All fields are required";
+    } else {
+
+        $stmt = $pdo->prepare("
+            SELECT Users_id, userName, userRole, password_hash, userStatus
+            FROM users
+            WHERE userEmail = ?
+        ");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if (!$user || !password_verify($password, $user["password_hash"])) {
+            $error = "Invalid email or password";
+        } else {
+
+            if ($user["userRole"] === "guide" && $user["userStatus"] !== "active") {
+                header("Location: guide-pending.php");
+                exit;
+            }
+
+            $_SESSION["user_id"] = $user["Users_id"];
+            $_SESSION["user_name"] = $user["userName"];
+            $_SESSION["user_role"] = $user["userRole"];
+
+            if ($user["userRole"] === "admin") {
+                header("Location: admin/dashboard.php");
+            } elseif ($user["userRole"] === "guide") {
+                header("Location: guide/dashboard.php");
+            } else {
+                header("Location: visitsLogged/animalsLogged.php");
+            }
+            exit;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +107,12 @@
                 Access your ASSAD account
             </p>
 
-            <form class="mt-8 space-y-5" method="POST" action="login_process.php">
+            <form class="mt-8 space-y-5" method="POST">
+                <?php if (!empty($error)) : ?>
+                <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
+                    <?php echo $error; ?>
+                </div>
+                <?php endif; ?>
 
                 <div>
                     <label class="block text-sm font-medium mb-1">Email</label>
@@ -89,6 +142,7 @@
                 </button>
 
             </form>
+
 
             <p class="text-center text-sm text-gray-500 mt-6">
                 Don’t have an account?

@@ -241,3 +241,6 @@ VALUES (
         4,
         'Loved the safari, but it was a bit crowded.'
     );
+
+    ALTER TABLE users
+ADD userStatus VARCHAR(20) DEFAULT 'Pending';
