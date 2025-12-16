@@ -10,7 +10,6 @@
 
 <body class="bg-gray-100 font-sans">
 
-    <!-- Sidebar (same as dashboard) -->
     <aside class="w-64 bg-gray-900 text-gray-100 min-h-screen fixed">
         <div class="p-6 text-xl font-bold tracking-wide border-b border-gray-700">
             ASSAD Admin
@@ -25,14 +24,12 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="ml-64 p-8">
 
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Statistics & Insights</h1>
         </div>
 
-        <!-- Stats Cards -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
             <div class="bg-white p-6 rounded-xl shadow">
                 <p class="text-sm text-gray-500">Total Users</p>
@@ -52,22 +49,18 @@
             </div>
         </section>
 
-        <!-- Charts -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
 
-            <!-- Visitors by Country -->
             <div class="bg-white rounded-xl shadow p-6">
                 <h2 class="text-xl font-semibold mb-4">Visitors by Country</h2>
                 <canvas id="visitorsChart"></canvas>
             </div>
 
-            <!-- Top Animals -->
             <div class="bg-white rounded-xl shadow p-6">
                 <h2 class="text-xl font-semibold mb-4">Top Animals Viewed</h2>
                 <canvas id="animalsChart"></canvas>
             </div>
 
-            <!-- Top Guided Tours -->
             <div class="bg-white rounded-xl shadow p-6 md:col-span-2">
                 <h2 class="text-xl font-semibold mb-4">Top Guided Tours</h2>
                 <canvas id="toursChart"></canvas>
@@ -77,7 +70,6 @@
 
     </main>
 
-    <!-- Chart.js Scripts -->
     <script>
     const visitorsCtx = document.getElementById('visitorsChart').getContext('2d');
     const visitorsChart = new Chart(visitorsCtx, {

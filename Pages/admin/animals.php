@@ -9,7 +9,6 @@
 
 <body class="bg-gray-100 font-sans">
 
-    <!-- Sidebar (same as dashboard) -->
     <aside class="w-64 bg-gray-900 text-gray-100 min-h-screen fixed">
         <div class="p-6 text-xl font-bold tracking-wide border-b border-gray-700">
             ASSAD Admin
@@ -24,7 +23,6 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="ml-64 p-8">
 
         <div class="flex justify-between items-center mb-6">
@@ -34,7 +32,6 @@
             </button>
         </div>
 
-        <!-- Animals Table -->
         <section class="bg-white rounded-xl shadow p-6">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead>

@@ -145,30 +145,6 @@ VALUES (
     );
 
 INSERT INTO
-    users (
-        userName,
-        userEmail,
-        userRole,
-        password_hash
-    )
-VALUES (
-        'Admin',
-        'admin@assad.com',
-        'Admin',
-        '$2y$10$examplehashforadmin'
-    ),
-    (
-        'John Doe',
-        'johndoe@gmail.com',
-        'Guide',
-        '$2y$10$examplehashforjohn'
-    ),
-    (
-        'Jane Smith',
-        'janesmith@gmail.com',
-        'Visitor',
-        '$2y$10$examplehashforjane'
-    );
 
 INSERT INTO
     guidedTours (
@@ -248,16 +224,32 @@ VALUES (
         'Loved the safari, but it was a bit crowded.'
     );
 
-    INSERT INTO
+INSERT INTO
     users (
         userName,
         userEmail,
         userRole,
-        password_hash
+        password_hash,
+        userStatus
     )
 VALUES (
-        'Mehdi_Test',
-        'admin@test2.ma',
+        'Admin',
+        'admin@assad.com',
+        'Admin',
+        '$2y$10$i6eS8Vz1f3JcrE/RD48z4OQvo8wTJpjbqtJ4mvJyD.tWFygC2j2Z6', --AdminMestry123
+        'Active'
+    ),
+    (
+        'Mehdi Cherkaoui',
+        'MehdiCherkaoui@youcode.com',
         'Guide',
-        '$2y$10$lVIcRsL.L/e0hAoHhprUfefLl7QOxhKB2y6IlG58LGopGXYiUpIh2'
+        '$2y$10$rCyjRVyo5b00HXr1ILr3/OmBOwp3y0Tg4388LDUj7sV7ZzgX.sNG.', --GuideMestry123
+        'Active'
+    ),
+    (
+        'Mestry',
+        'Mestry@gmail.com',
+        'Visiteur',
+        '$2y$10$sALOlus81zV7tQCTWlRadO.ExPJRsuaOGy9fbhACy7NgHh0AMaoWO', --  
+        'Active'
     );

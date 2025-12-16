@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 font-sans">
 
-    <!-- Sidebar -->
     <aside class="w-64 bg-primary text-white min-h-screen fixed">
         <div class="p-6 text-xl font-bold border-b border-green-700">
             ASSAD Guide
@@ -36,7 +35,6 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="ml-64 p-8">
 
         <h1 class="text-3xl font-bold text-gray-800">My Bookings</h1>
@@ -70,7 +68,6 @@
                         <td class="px-4 py-2"><span
                                 class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Pending</span></td>
                     </tr>
-                    <!-- More bookings rows here -->
                 </tbody>
             </table>
         </section>

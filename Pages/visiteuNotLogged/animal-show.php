@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 font-sans text-gray-800">
 
-    <!-- Header -->
     <header class="bg-primary text-white">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -37,15 +36,12 @@
         </div>
     </header>
 
-    <!-- Animal Details -->
     <main class="max-w-5xl mx-auto px-6 py-12">
         <div class="bg-white rounded-xl shadow p-8 flex flex-col md:flex-row gap-8">
-            <!-- Animal Image -->
             <div class="md:w-1/2">
                 <img src="images/atlas_lion.jpg" alt="Atlas Lion" class="rounded-xl w-full h-auto shadow">
             </div>
 
-            <!-- Animal Info -->
             <div class="md:w-1/2 flex flex-col gap-4">
                 <h1 class="text-3xl font-bold text-primary">Atlas Lion – Asaad</h1>
                 <p class="text-gray-700">
@@ -65,7 +61,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-6 mt-12">
         <div class="text-center text-sm">
             © 2025 ASSAD Virtual Zoo — Africa Cup of Nations Morocco

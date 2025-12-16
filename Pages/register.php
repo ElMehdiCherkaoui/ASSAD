@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            $status = ($role === "guide") ? "pending" : "active";
+            $status = ($role === "Guide") ? "Pending" : "Active";
 
             $stmt->execute([$name, $email, $role, $hashedPassword, $status]);
 
@@ -104,8 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <select name="role" required
                         class="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-jungle">
                         <option value="">Select role</option>
-                        <option value="visitor">Visitor</option>
-                        <option value="guide">Guide (requires approval)</option>
+                        <option value="Visitor">Visitor</option>
+                        <option value="Guide">Guide (requires approval)</option>
                     </select>
                 </div>
 

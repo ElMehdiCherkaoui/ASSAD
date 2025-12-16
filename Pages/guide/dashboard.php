@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 font-sans">
 
-    <!-- Sidebar -->
     <aside class="w-64 bg-primary text-white min-h-screen fixed">
         <div class="p-6 text-xl font-bold border-b border-green-700">
             ASSAD Guide
@@ -36,13 +35,11 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="ml-64 p-8">
 
         <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
         <p class="text-gray-500 mt-1">Welcome back, Guide John Doe</p>
 
-        <!-- Stats Cards -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
             <div class="bg-white p-6 rounded-xl shadow">
                 <p class="text-sm text-gray-500">Upcoming Visits</p>
@@ -65,7 +62,6 @@
             </div>
         </section>
 
-        <!-- Recent Bookings -->
         <section class="bg-white rounded-xl shadow p-6 mt-10">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Recent Bookings</h2>
             <div class="overflow-x-auto">

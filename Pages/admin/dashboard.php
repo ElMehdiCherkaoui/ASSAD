@@ -9,7 +9,6 @@
 
 <body class="bg-gray-100 font-sans">
 
-    <!-- Sidebar -->
     <aside class="w-64 bg-gray-900 text-gray-100 min-h-screen fixed">
         <div class="p-6 text-xl font-bold tracking-wide border-b border-gray-700">
             ASSAD Admin
@@ -28,7 +27,6 @@
     </aside>
 
 
-    <!-- Main Content -->
     <main class="ml-64 p-8">
 
         <h1 class="text-3xl font-bold text-gray-800">
@@ -38,7 +36,6 @@
             Welcome back, Administrator
         </p>
 
-        <!-- Stats Cards -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
 
             <div class="bg-white p-6 rounded-xl shadow">
@@ -63,40 +60,32 @@
 
         </section>
 
-        <!-- Statistics & Recent Activity -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
 
-            <!-- Left: Key Statistics -->
             <div class="bg-white rounded-xl shadow p-6">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Statistics Overview</h2>
 
                 <ul class="space-y-4 text-gray-700">
-                    <!-- Total registered users -->
                     <li class="flex justify-between items-center">
                         <span>Total Users</span>
                         <span class="font-bold text-gray-800">124</span>
                     </li>
-                    <!-- Pending Guide approvals -->
                     <li class="flex justify-between items-center">
                         <span>Pending Guide Approvals</span>
                         <span class="font-bold text-yellow-500">5</span>
                     </li>
-                    <!-- Total animals in zoo -->
                     <li class="flex justify-between items-center">
                         <span>Total Animals</span>
                         <span class="font-bold text-gray-800">32</span>
                     </li>
-                    <!-- Total habitats -->
                     <li class="flex justify-between items-center">
                         <span>Total Habitats</span>
                         <span class="font-bold text-gray-800">10</span>
                     </li>
-                    <!-- Total guided tours -->
                     <li class="flex justify-between items-center">
                         <span>Guided Tours</span>
                         <span class="font-bold text-gray-800">18</span>
                     </li>
-                    <!-- Total reservations -->
                     <li class="flex justify-between items-center">
                         <span>Total Reservations</span>
                         <span class="font-bold text-green-500">42</span>
@@ -104,7 +93,6 @@
                 </ul>
             </div>
 
-            <!-- Right: Recent Activity Feed -->
             <div class="bg-white rounded-xl shadow p-6">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Activity</h2>
 
