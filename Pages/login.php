@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "Invalid email or password";
         } else {
 
-            if ($user["userRole"] === "guide" && $user["userStatus"] !== "active") {
-                header("Location: guide-pending.php");
+            if ($user["userRole"] === "Guide" && $user["userStatus"] !== "active") {
+                header("Location: guide/guide-pending.php");
                 exit;
             }
 
@@ -34,9 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["user_name"] = $user["userName"];
             $_SESSION["user_role"] = $user["userRole"];
 
-            if ($user["userRole"] === "admin") {
+            if ($user["userRole"] === "Admin") {
                 header("Location: admin/dashboard.php");
-            } elseif ($user["userRole"] === "guide") {
+            } elseif ($user["userRole"] === "Guide") {
                 header("Location: guide/dashboard.php");
             } else {
                 header("Location: visitsLogged/animalsLogged.php");
@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,17 +58,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    jungle: '#0f3d2e',
-                    gold: '#fbbf24',
-                    sand: '#f8fafc'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jungle: '#0f3d2e',
+                        gold: '#fbbf24',
+                        sand: '#f8fafc'
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
 
@@ -109,9 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <form class="mt-8 space-y-5" method="POST">
                 <?php if (!empty($error)) : ?>
-                <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
-                    <?php echo $error; ?>
-                </div>
+                    <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
+                        <?php echo $error; ?>
+                    </div>
                 <?php endif; ?>
 
                 <div>

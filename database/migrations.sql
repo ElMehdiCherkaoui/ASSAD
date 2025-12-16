@@ -6,7 +6,7 @@ USE assad;
 CREATE TABLE Habitats (
     Hab_id INT AUTO_INCREMENT PRIMARY KEY,
     habitatsName VARCHAR(100) NOT NULL,
-    climateType VARCHAR(20) NOT NULL,
+    typeClimat VARCHAR(20) NOT NULL,
     descriptionHab TEXT,
     zoo_zone VARCHAR(255)
 );
@@ -14,9 +14,11 @@ CREATE TABLE Habitats (
 CREATE TABLE Animal (
     Ani_id INT AUTO_INCREMENT PRIMARY KEY,
     animalName VARCHAR(100) NOT NULL,
-    species VARCHAR(20) NOT NULL,
+    espèce VARCHAR(20) NOT NULL,
+    alimentation VARCHAR(50) NOT NULL,
     Image VARCHAR(255),
-    country_origin VARCHAR(50),
+    paysOrigine VARCHAR(50),
+    descriptionCourte VARCHAR(100),
     Habitat_ID INT,
     FOREIGN KEY (Habitat_ID) REFERENCES Habitats (Hab_id)
 );
@@ -26,26 +28,29 @@ CREATE TABLE users (
     userName VARCHAR(100) NOT NULL,
     userEmail VARCHAR(100) NOT NULL UNIQUE,
     userRole VARCHAR(50),
-    password_hash VARCHAR(255) NOT NULL
+    password_hash VARCHAR(255) NOT NULL,
+    userStatus VARCHAR(20)
 );
 
-CREATE TABLE guidedTours (
+CREATE TABLE visitesGuidees (
     guided_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     date_time DATETIME,
     languages VARCHAR(50) NOT NULL,
     max_capacity INT NOT NULL,
+    duree INT,
     price INT NOT NULL,
     user_guide_id INT,
     FOREIGN KEY (user_guide_id) REFERENCES users (Users_id)
 );
 
-CREATE TABLE tourSteps (
+CREATE TABLE etapesvisite (
     step_id INT AUTO_INCREMENT PRIMARY KEY,
     step_title VARCHAR(100) NOT NULL,
+    step_description TEXT,
     step_order INT,
     guid_tour_id INT,
-    FOREIGN KEY (guid_tour_id) REFERENCES guidedTours (guided_id)
+    FOREIGN KEY (guid_tour_id) REFERENCES visitesGuidees (guided_id)
 );
 
 CREATE TABLE userComments (
@@ -54,17 +59,18 @@ CREATE TABLE userComments (
     user_id_comment_fk INT,
     rating INT,
     text TEXT,
+    date_commentaire DATE DEFAULT CURRENT_DATE,
     FOREIGN KEY (user_id_comment_fk) REFERENCES users (Users_id),
-    FOREIGN KEY (tours_id_comment_fk) REFERENCES guidedTours (guided_id)
+    FOREIGN KEY (tours_id_comment_fk) REFERENCES visitesGuidees (guided_id)
 );
 
-CREATE TABLE reservations (
+CREATE TABLE userReservations (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
     tour_id_reservation_fk INT,
     user_id_reservation_fk INT,
     number_of_people INT,
     reservation_date DATETIME,
-    FOREIGN KEY (tour_id_reservation_fk) REFERENCES guidedTours (guided_id),
+    FOREIGN KEY (tour_id_reservation_fk) REFERENCES visitesGuidees (guided_id),
     FOREIGN KEY (user_id_reservation_fk) REFERENCES users (Users_id)
 );
 
@@ -242,5 +248,16 @@ VALUES (
         'Loved the safari, but it was a bit crowded.'
     );
 
-    ALTER TABLE users
-ADD userStatus VARCHAR(20) DEFAULT 'Pending';
+    INSERT INTO
+    users (
+        userName,
+        userEmail,
+        userRole,
+        password_hash
+    )
+VALUES (
+        'Mehdi_Test',
+        'admin@test2.ma',
+        'Guide',
+        '$2y$10$lVIcRsL.L/e0hAoHhprUfefLl7QOxhKB2y6IlG58LGopGXYiUpIh2'
+    );
