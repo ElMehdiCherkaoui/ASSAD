@@ -37,11 +37,11 @@
             </div>
 
             <nav class="space-x-6 text-sm font-medium">
-                <a href="/index.php" class="hover:text-secondary">Home</a>
-                <a href="/visitor/animals.php" class="hover:text-secondary">Animals</a>
-                <a href="/visitor/visits.php" class="hover:text-secondary">Guided Visits</a>
-                <a href="/Pages/login.php" class="hover:text-secondary">Login</a>
-                <a href="/Pages/register.php"
+                <a href="../../index.php" class="hover:text-secondary">Home</a>
+                <a href="animals.php" class="hover:text-secondary">Animals</a>
+                <a href="visits.php" class="hover:text-secondary">Guided Visits</a>
+                <a href="../login.php" class="hover:text-secondary">Login</a>
+                <a href="../register.php"
                     class="bg-secondary text-black px-4 py-2 rounded-lg font-semibold hover:bg-amber-400">
                     Register
                 </a>
