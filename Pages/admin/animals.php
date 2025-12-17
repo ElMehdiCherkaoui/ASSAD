@@ -140,6 +140,73 @@
                 </form>
             </div>
         </div>
+
+        <div id="editAnimalModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 ">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative h-[40em] overflow-auto">
+
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Edit Animal</h2>
+                    <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+                </div>
+
+                <form id="editAnimalForm" class="space-y-4">
+
+                    <input type="hidden" id="editAniId">
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Animal Name</label>
+                        <input type="text" id="editAnimalName"
+                            class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Species</label>
+                        <input type="text" id="editEspece" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Alimentation</label>
+                        <input type="text" id="editAlimentation" class="w-full mt-1 px-4 py-2 border rounded-lg"
+                            required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Habitat</label>
+                        <select id="editHabitatSelect" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Country of Origin</label>
+                        <input type="text" id="editPaysOrigine" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Image (URL or name)</label>
+                        <input type="text" id="editImage" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Description</label>
+                        <textarea id="editDescription" rows="3"
+                            class="w-full mt-1 px-4 py-2 border rounded-lg"></textarea>
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-4">
+                        <button type="button" id="cancelEditBtn"
+                            class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
 </body>
 
 <script src="../../asset/js/animalAdminPage.js"></script>

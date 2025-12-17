@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 if (
     empty($_POST['Ani_id']) ||
     empty($_POST['animalName']) ||
-    empty($_POST['espece']) ||
+    empty($_POST['espèce']) ||
     empty($_POST['alimentation']) ||
     empty($_POST['Habitat_ID']) ||
     empty($_POST['paysOrigine'])
@@ -19,7 +19,7 @@ if (
 
 $animalId    = $_POST['Ani_id'];
 $animalName  = $_POST['animalName'];
-$espece      = $_POST['espece'];
+$espece      = $_POST['espèce'];
 $alimentation = $_POST['alimentation'];
 $habitatId   = $_POST['Habitat_ID'];
 $paysOrigine = $_POST['paysOrigine'];

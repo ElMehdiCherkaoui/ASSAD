@@ -12,8 +12,11 @@ function displayAllAnimals(animals) {
                             <img src="${a.Image}" alt="Asaad" class="w-12 h-12 rounded">
                         </td>
                         <td class="px-6 py-4 space-x-2">
-                            <button class="EditBtn bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</button>
-                            <button onclick="deleteAnimal(${a.Ani_id})"  class="deleteBtn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                           <button onclick='openEditAnimalModal(${JSON.stringify(a)})'
+    class="EditBtn bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+    Edit
+</button>
+       <button onclick="deleteAnimal(${a.Ani_id})"  class="deleteBtn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
                         </td>
                     </tr>`
         animalContainer.innerHTML += block;
@@ -46,6 +49,7 @@ closeModal.addEventListener('click', () => {
 cancelBtn.addEventListener('click', () => {
     addAnimalModal.classList.add('hidden');
 });
+const editHabitatSelect = document.getElementById("editHabitatSelect");
 
 fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
     .then(res => res.json())
@@ -55,6 +59,7 @@ fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
             option.value = h.Hab_id;
             option.textContent = h.habitatsName;
             habitatSelect.appendChild(option);
+            editHabitatSelect.appendChild(option);
         });
     })
     .catch(err => console.error("Error fetching habitats:", err));
@@ -112,3 +117,52 @@ function deleteAnimal(id) {
         })
         .catch(err => console.error("Delete error:", err));
 }
+
+function openEditAnimalModal(animal) {
+    const modal = document.getElementById("editAnimalModal");
+    const form = document.getElementById("editAnimalForm");
+
+    form.editAniId.value = animal.Ani_id;
+    form.editAnimalName.value = animal.animalName;
+    form.editEspece.value = animal.espèce;
+    form.editAlimentation.value = animal.alimentation;
+    form.editHabitatSelect.value = animal.Habitat_ID;
+    form.editPaysOrigine.value = animal.paysOrigine;
+    form.editImage.value = animal.Image;
+    form.editDescription.value = animal.descriptionCourte;
+
+
+    modal.classList.remove("hidden");
+    document.getElementById("cancelEditBtn").addEventListener("click", () => { modal.classList.add("hidden"); })
+    document.getElementById("closeEditModal").addEventListener("click", () => { modal.classList.add("hidden"); })
+    document.getElementById("editAnimalForm").addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("Ani_id", document.getElementById("editAniId").value);
+        formData.append("animalName", document.getElementById("editAnimalName").value);
+        formData.append("espèce", document.getElementById("editEspece").value);
+        formData.append("alimentation", document.getElementById("editAlimentation").value);
+        formData.append("Habitat_ID", document.getElementById("editHabitatSelect").value);
+        formData.append("paysOrigine", document.getElementById("editPaysOrigine").value);
+        formData.append("Image", document.getElementById("editImage").value);
+        formData.append("descriptionCourte", document.getElementById("editDescription").value);
+
+        fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/edit.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    alert("Animal updated successfully!");
+                    loadAnimal();
+                    document.getElementById("editAnimalModal").classList.add("hidden");
+                } else {
+                    alert(result.message || "Error: could not update animal.");
+                }
+            })
+            .catch(err => console.error("Fetch Error:", err));
+    });
+}
+

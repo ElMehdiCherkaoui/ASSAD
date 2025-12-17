@@ -10,6 +10,7 @@ $sql = "SELECT
             a.alimentation,
             a.paysOrigine,
             a.Image,
+            a.descriptionCourte,
             h.habitatsName
         FROM Animal a
         LEFT JOIN Habitats h ON a.Habitat_ID = h.Hab_id";
