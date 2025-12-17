@@ -27,7 +27,7 @@
 
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Animals Management</h1>
-            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <button id="addAnimalBtn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
                 + Add New Animal
             </button>
         </div>
@@ -40,16 +40,18 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Species</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Habitat</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">paysOrigine</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
+                <tbody class="divide-y divide-gray-200" id="animalContainer">
                     <tr>
                         <td class="px-6 py-4">1</td>
                         <td class="px-6 py-4">Asaad</td>
                         <td class="px-6 py-4">Lion</td>
                         <td class="px-6 py-4">African Savanna</td>
+                        <td class="px-6 py-4">test</td>
                         <td class="px-6 py-4">
                             <img src="https://via.placeholder.com/50" alt="Asaad" class="w-12 h-12 rounded">
                         </td>
@@ -63,6 +65,7 @@
                         <td class="px-6 py-4">Kifaru</td>
                         <td class="px-6 py-4">Rhinoceros</td>
                         <td class="px-6 py-4">Grasslands</td>
+                        <td class="px-6 py-4">test</td>
                         <td class="px-6 py-4">
                             <img src="https://via.placeholder.com/50" alt="Kifaru" class="w-12 h-12 rounded">
                         </td>
@@ -74,9 +77,107 @@
                 </tbody>
             </table>
         </section>
+        <div id="addAnimalModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-xl p-6 w-full max-w-lg relative">
+                <!-- Close Button -->
+                <button id="closeModal"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">&times;</button>
 
+                <h2 class="text-2xl font-bold mb-4">Add New Animal</h2>
+
+                <form id="addAnimalForm" class="space-y-4">
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" name="animalName" required
+                            class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Species</label>
+                        <input type="text" name="espece" required class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Habitat</label>
+                        <select name="habitat_id" id="habitatSelect" required
+                            class="mt-1 block w-full border rounded px-3 py-2">
+                            <option value="">Select Habitat</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Country of Origin</label>
+                        <input type="text" name="paysOrigine" required
+                            class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Image URL</label>
+                        <input type="text" name="Image" class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" id="cancelBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
+    <div id="addAnimalPopup" class="hidden fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-6 w-full max-w-lg relative">
+            <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">&times;</button>
 
+            <h2 class="text-2xl font-bold mb-4">Add New Animal</h2>
+
+            <form id="addAnimalForm" class="space-y-4">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="animalName" required class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Species</label>
+                    <input type="text" name="espece" required class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Habitat</label>
+                    <select name="habitat_id" id="habitatSelect" required
+                        class="mt-1 block w-full border rounded px-3 py-2">
+                        <option value="">Select Habitat</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Country of Origin</label>
+                    <input type="text" name="paysOrigine" required class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Image URL</label>
+                    <input type="text" name="Image" class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button type="button" id="cancelBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
+                        Add
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
+<script src="../../asset/js/animalAdminPage.js"></script>
 
 </html>

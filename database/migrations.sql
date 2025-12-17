@@ -77,71 +77,95 @@ CREATE TABLE userReservations (
 INSERT INTO
     Habitats (
         habitatsName,
-        climateType,
+        typeClimat,
         descriptionHab,
         zoo_zone
     )
 VALUES (
-        'Atlas Mountains',
-        'Mountain',
-        'Home of the Atlas Lions.',
-        'North Zone'
+        'Savannah',
+        'Tropical',
+        'Open grassy plains with scattered trees, ideal for lions, elephants, and giraffes.',
+        'Zone A'
     ),
     (
-        'African Savanna',
-        'Savanna',
-        'Large open grasslands for African herbivores.',
-        'East Zone'
+        'Antarctic Zone',
+        'Polar',
+        'Cold habitat with ice and snow, suitable for penguins and seals.',
+        'Zone B'
+    ),
+    (
+        'Australian Outback',
+        'Arid',
+        'Dry desert-like area for kangaroos, emus, and reptiles.',
+        'Zone C'
     ),
     (
         'Rainforest',
         'Tropical',
-        'Dense forest area for monkeys and exotic birds.',
-        'South Zone'
+        'Dense forest with high humidity, home to monkeys, parrots, and snakes.',
+        'Zone D'
+    ),
+    (
+        'Reptile House',
+        'Controlled',
+        'Indoor habitat with temperature and humidity control for snakes, lizards, and turtles.',
+        'Zone E'
     );
 
 INSERT INTO
     Animal (
         animalName,
-        species,
+        espèce,
+        alimentation,
         Image,
-        country_origin,
+        paysOrigine,
+        descriptionCourte,
         Habitat_ID
     )
 VALUES (
-        'Asaad',
-        'Atlas Lion',
-        'atlas_lion.jpg',
-        'Morocco',
+        'Lion',
+        'Mammal',
+        'Carnivore',
+        'lion.jpg',
+        'Kenya',
+        'King of the jungle',
         1
     ),
     (
+        'Penguin',
+        'Bird',
+        'Carnivore',
+        'penguin.jpg',
+        'Antarctica',
+        'Cute swimming bird',
+        2
+    ),
+    (
         'Elephant',
-        'African Elephant',
+        'Mammal',
+        'Herbivore',
         'elephant.jpg',
-        'Kenya',
-        2
+        'India',
+        'Largest land animal',
+        1
     ),
     (
-        'Giraffe',
-        'Giraffa camelopardalis',
-        'giraffe.jpg',
-        'Tanzania',
-        2
-    ),
-    (
-        'Chimpanzee',
-        'Pan troglodytes',
-        'chimpanzee.jpg',
-        'Congo',
+        'Kangaroo',
+        'Mammal',
+        'Herbivore',
+        'kangaroo.jpg',
+        'Australia',
+        'Jumps high',
         3
     ),
     (
-        'Toucan',
-        'Ramphastos',
-        'toucan.jpg',
-        'Cameroon',
-        3
+        'Cobra',
+        'Reptile',
+        'Carnivore',
+        'cobra.jpg',
+        'India',
+        'Venomous snake',
+        4
     );
 
 INSERT INTO
@@ -253,3 +277,4 @@ VALUES (
         '$2y$10$sALOlus81zV7tQCTWlRadO.ExPJRsuaOGy9fbhACy7NgHh0AMaoWO', --  
         'Active'
     );
+
