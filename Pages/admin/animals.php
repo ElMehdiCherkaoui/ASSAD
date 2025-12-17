@@ -77,9 +77,9 @@
                 </tbody>
             </table>
         </section>
-        <div id="addAnimalModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div id="addAnimalPopup"
+            class="hidden fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-50 overflow-auto h-50">
             <div class="bg-white rounded-xl p-6 w-full max-w-lg relative">
-                <!-- Close Button -->
                 <button id="closeModal"
                     class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">&times;</button>
 
@@ -89,13 +89,19 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="animalName" required
+                        <input type="text" name="animalName" id="animalName" required
                             class="mt-1 block w-full border rounded px-3 py-2">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Species</label>
-                        <input type="text" name="espece" required class="mt-1 block w-full border rounded px-3 py-2">
+                        <input type="text" name="espece" id="espece" required
+                            class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">alimentation</label>
+                        <input type="text" name="alimentation" id="alimentation" required
+                            class="mt-1 block w-full border rounded px-3 py-2">
                     </div>
 
                     <div>
@@ -108,74 +114,32 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Country of Origin</label>
-                        <input type="text" name="paysOrigine" required
+                        <input type="text" name="paysOrigine" id="paysOrigine" required
                             class="mt-1 block w-full border rounded px-3 py-2">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Image URL</label>
-                        <input type="text" name="Image" class="mt-1 block w-full border rounded px-3 py-2">
+                        <input type="text" name="Image" id="Image" class="mt-1 block w-full border rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Description</label>
+                        <input type="text" name="Description" id="Description"
+                            class="mt-1 block w-full border rounded px-3 py-2">
                     </div>
 
                     <div class="flex justify-end space-x-3">
                         <button type="button" id="cancelBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
                             Cancel
                         </button>
-                        <button type="submit" class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
+                        <button type="submit" id="addAnimalForm"
+                            class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
                             Add
                         </button>
                     </div>
                 </form>
             </div>
         </div>
-    </main>
-    <div id="addAnimalPopup" class="hidden fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
-        <div class="bg-white rounded-xl p-6 w-full max-w-lg relative">
-            <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">&times;</button>
-
-            <h2 class="text-2xl font-bold mb-4">Add New Animal</h2>
-
-            <form id="addAnimalForm" class="space-y-4">
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Name</label>
-                    <input type="text" name="animalName" required class="mt-1 block w-full border rounded px-3 py-2">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Species</label>
-                    <input type="text" name="espece" required class="mt-1 block w-full border rounded px-3 py-2">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Habitat</label>
-                    <select name="habitat_id" id="habitatSelect" required
-                        class="mt-1 block w-full border rounded px-3 py-2">
-                        <option value="">Select Habitat</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Country of Origin</label>
-                    <input type="text" name="paysOrigine" required class="mt-1 block w-full border rounded px-3 py-2">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Image URL</label>
-                    <input type="text" name="Image" class="mt-1 block w-full border rounded px-3 py-2">
-                </div>
-
-                <div class="flex justify-end space-x-3">
-                    <button type="button" id="cancelBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
-                        Cancel
-                    </button>
-                    <button type="submit" class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
-                        Add
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 </body>
 
 <script src="../../asset/js/animalAdminPage.js"></script>

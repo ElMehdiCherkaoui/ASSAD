@@ -13,7 +13,7 @@ function displayAllAnimals(animals) {
                         </td>
                         <td class="px-6 py-4 space-x-2">
                             <button class="EditBtn bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</button>
-                            <button class="deleteBtn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                            <button onclick="deleteAnimal(${a.Ani_id})"  class="deleteBtn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
                         </td>
                     </tr>`
         animalContainer.innerHTML += block;
@@ -30,51 +30,85 @@ loadAnimal();
 
 
 
-// const addAnimalBtn = document.getElementById('addAnimalBtn');
-// const addAnimalModal = document.getElementById('addAnimalPopup');
-// const closeModal = document.getElementById('closeModal');
-// const cancelBtn = document.getElementById('cancelBtn');
-// const habitatSelect = document.getElementById('habitatSelect');
-// const addAnimalForm = document.getElementById('addAnimalForm');
+const addAnimalBtn = document.getElementById('addAnimalBtn');
+const addAnimalModal = document.getElementById('addAnimalPopup');
+const closeModal = document.getElementById('closeModal');
+const cancelBtn = document.getElementById('cancelBtn');
+const habitatSelect = document.getElementById('habitatSelect');
 
+addAnimalBtn.addEventListener('click', () => {
+    addAnimalModal.classList.remove('hidden');
+});
 
-// addAnimalBtn.addEventListener('click', () => addAnimalModal.classList.remove('hidden'));
+closeModal.addEventListener('click', () => {
+    addAnimalModal.classList.add('hidden');
+});
+cancelBtn.addEventListener('click', () => {
+    addAnimalModal.classList.add('hidden');
+});
 
+fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(h => {
+            const option = document.createElement('option');
+            option.value = h.Hab_id;
+            option.textContent = h.habitatsName;
+            habitatSelect.appendChild(option);
+        });
+    })
+    .catch(err => console.error("Error fetching habitats:", err));
 
-// closeModal.addEventListener('click', () => addAnimalModal.classList.add('hidden'));
-// cancelBtn.addEventListener('click', () => addAnimalModal.classList.add('hidden'));
+document.getElementById("addAnimalForm").addEventListener('submit', (e) => {
+    e.preventDefault();
 
-// fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
-//     .then(res => res.json())
-//     .then(data => {
-//         data.forEach(h => {
-//             const option = document.createElement('option');
-//             option.value = h.Hab_id;
-//             option.textContent = h.habitatsName;
-//             habitatSelect.appendChild(option);
-//         });
-//     })
-//     .catch(err => console.error(err));
+    const formData = new FormData();
 
+    formData.append("animalName", document.getElementById("animalName").value);
+    formData.append("espèce", document.getElementById("espece").value);
+    formData.append("alimentation", document.getElementById("alimentation").value);
+    formData.append("Habitat_ID", document.getElementById("habitatSelect").value);
+    formData.append("paysOrigine", document.getElementById("paysOrigine").value);
+    formData.append("Image", document.getElementById("Image").value);
+    formData.append("descriptionCourte", document.getElementById("Description").value);
 
-// addAnimalForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
+    fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/add.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(res => res.json())
+        .then(result => {
+            if (result.success) {
+                alert("Animal added successfully!");
+                loadAnimal();
+                addAnimalModal.classList.add("hidden");
 
-//     const formData = new FormData(addAnimalForm);
+            } else {
+                alert(result.message || "Error: could not save animal.");
+            }
+        })
+        .catch(err => console.error("Fetch Error:", err));
+});
+function deleteAnimal(id) {
+    if (!confirm("Are you sure you want to delete this animal?")) {
+        return;
+    }
 
-//     fetch('/youcode/ASSAD/Pages/admin/api/apiAnimal/add.php', {
-//         method: 'POST',
-//         body: formData
-//     })
-//         .then(res => res.json())
-//         .then(data => {
-//             if (data.success) {
-//                 alert('Animal added successfully!');
-//                 addAnimalForm.reset();
-//                 addAnimalModal.classList.add('hidden');
-//             } else {
-//                 alert('Error adding animal.');
-//             }
-//         })
-//         .catch(err => console.error(err));
-// });
+    let formData = new FormData();
+    formData.append("Ani_id", id);
+
+    fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/delete.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(res => res.json())
+        .then(result => {
+            if (result.success) {
+                alert("Animal deleted successfully!");
+                loadAnimal();
+            } else {
+                alert("Error deleting animal.");
+            }
+        })
+        .catch(err => console.error("Delete error:", err));
+}

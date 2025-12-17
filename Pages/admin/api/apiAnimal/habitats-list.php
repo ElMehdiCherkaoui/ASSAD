@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 $sql = "SELECT 
             Hab_id,
-            habitatsName,
+            habitatsName
         FROM Habitats";
 
 $stmt = $pdo->prepare($sql);

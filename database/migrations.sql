@@ -278,3 +278,7 @@ VALUES (
         'Active'
     );
 
+SELECT 
+            Hab_id,
+            habitatsName
+        FROM Habitats
