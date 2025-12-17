@@ -25,8 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "Invalid email or password";
         } else {
 
-            if ($user["userRole"] === "Guide" && $user["userStatus"] !== "Active") {
+            if ($user["userRole"] === "Guide" && $user["userStatus"] === "Pending") {
                 header("Location: guide/guide-pending.php");
+                exit;
+            }
+
+            if ($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled" || $user["userRole"] === "Guide" && $user["userStatus"] === "Disabled") {
+                header("Location: visitsLogged/DesactivePage.php");
                 exit;
             }
 

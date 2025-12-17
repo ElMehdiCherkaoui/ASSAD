@@ -27,7 +27,7 @@ function displayAllUsers(users) {
     profileContainer.innerHTML = "";
 
     users.forEach((u) => {
-
+        if (u.userRole === "Admin") { return; };
         let statusClass = "";
         if (u.userStatus === "Active") statusClass = "text-green-500";
         if (u.userStatus === "Pending") statusClass = "text-yellow-500";
