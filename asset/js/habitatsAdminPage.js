@@ -96,8 +96,8 @@ function deleteHabitats(id) {
 }
 
 
-function openEditAnimalModal(Habitat) {
-    const modal = document.getElementById("editAnimalModal");
+function openEditHabitatsModal(Habitat) {
+    const modal = document.getElementById("editHabitatsModal");
     const form = document.getElementById("editHabitatForm");
 
     form.edithabId.value = Habitat.Hab_id;
@@ -110,15 +110,15 @@ function openEditAnimalModal(Habitat) {
     modal.classList.remove("hidden");
     document.getElementById("cancelEditBtn").addEventListener("click", () => { modal.classList.add("hidden"); })
     document.getElementById("closeEditModal").addEventListener("click", () => { modal.classList.add("hidden"); })
-    document.getElementById("editAnimalForm").addEventListener('submit', (e) => {
+    document.getElementById("editHabitatForm").addEventListener('submit', (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append("Hab_id", document.getElementById("edithabId").value);
-        formData.append("habitatsName", document.getElementById("editHabitatName").value);
-        formData.append("typeClimat", document.getElementById("edittypeClimat").value);
-        formData.append("descriptionHab", document.getElementById("editDescription").value);
-        formData.append("zoo_zone", document.getElementById("editzoo_zone").value);
+        formData.append("id", document.getElementById("edithabId").value);
+        formData.append("Name", document.getElementById("editHabitatName").value);
+        formData.append("type", document.getElementById("edittypeClimat").value);
+        formData.append("description", document.getElementById("editDescription").value);
+        formData.append("zone", document.getElementById("editzoo_zone").value);
 
         fetch("/youcode/ASSAD/Pages/admin/api/apiHabitats/edit.php", {
             method: "POST",
@@ -128,7 +128,7 @@ function openEditAnimalModal(Habitat) {
             .then(result => {
                 if (result.success) {
                     alert("Habitat updated successfully!");
-                    loadAnimal();
+                    loadHabitats();
                     document.getElementById("editHabitatsModal").classList.add("hidden");
                 } else {
                     alert(result.message || "Error: could not update habitat.");

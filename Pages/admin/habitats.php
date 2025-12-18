@@ -126,7 +126,7 @@
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative h-[40em] overflow-auto">
 
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-gray-800">Edit Animal</h2>
+                <h2 class="text-xl font-bold text-gray-800">Edit Habitats</h2>
                 <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
             </div>
 
@@ -159,7 +159,8 @@
                     <button type="button" id="cancelEditBtn" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
                         Cancel
                     </button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    <button id="editHabitatForm" type="submit"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                         Save Changes
                     </button>
                 </div>
