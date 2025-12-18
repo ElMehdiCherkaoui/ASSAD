@@ -94,3 +94,46 @@ function deleteHabitats(id) {
         })
         .catch(err => console.error("Delete error:", err));
 }
+
+
+function openEditAnimalModal(Habitat) {
+    const modal = document.getElementById("editAnimalModal");
+    const form = document.getElementById("editHabitatForm");
+
+    form.edithabId.value = Habitat.Hab_id;
+    form.editHabitatName.value = Habitat.habitatsName;
+    form.edittypeClimat.value = Habitat.typeClimat;
+    form.editzoo_zone.value = Habitat.zoo_zone;
+    form.editDescription.value = Habitat.descriptionHab;
+
+
+    modal.classList.remove("hidden");
+    document.getElementById("cancelEditBtn").addEventListener("click", () => { modal.classList.add("hidden"); })
+    document.getElementById("closeEditModal").addEventListener("click", () => { modal.classList.add("hidden"); })
+    document.getElementById("editAnimalForm").addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("Hab_id", document.getElementById("edithabId").value);
+        formData.append("habitatsName", document.getElementById("editHabitatName").value);
+        formData.append("typeClimat", document.getElementById("edittypeClimat").value);
+        formData.append("descriptionHab", document.getElementById("editDescription").value);
+        formData.append("zoo_zone", document.getElementById("editzoo_zone").value);
+
+        fetch("/youcode/ASSAD/Pages/admin/api/apiHabitats/edit.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    alert("Habitat updated successfully!");
+                    loadAnimal();
+                    document.getElementById("editHabitatsModal").classList.add("hidden");
+                } else {
+                    alert(result.message || "Error: could not update habitat.");
+                }
+            })
+            .catch(err => console.error("Fetch Error:", err));
+    });
+}

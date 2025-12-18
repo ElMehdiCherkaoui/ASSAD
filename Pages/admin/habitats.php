@@ -130,40 +130,24 @@
                 <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
             </div>
 
-            <form id="editAnimalForm" class="space-y-4">
+            <form id="editHabitatForm" class="space-y-4">
 
-                <input type="hidden" id="editAniId">
+                <input type="hidden" id="edithabId">
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-600">Animal Name</label>
-                    <input type="text" id="editAnimalName"
+                    <label class="block text-sm font-medium text-gray-600">Habitat Name</label>
+                    <input type="text" id="editHabitatName"
                         class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200" required>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-600">Species</label>
-                    <input type="text" id="editEspece" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
+                    <label class="block text-sm font-medium text-gray-600">typeClimat</label>
+                    <input type="text" id="edittypeClimat" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-600">Alimentation</label>
-                    <input type="text" id="editAlimentation" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-600">Habitat</label>
-                    <select id="editHabitatSelect" class="w-full mt-1 px-4 py-2 border rounded-lg">
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-600">Country of Origin</label>
-                    <input type="text" id="editPaysOrigine" class="w-full mt-1 px-4 py-2 border rounded-lg">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-600">Image (URL or name)</label>
-                    <input type="text" id="editImage" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                    <label class="block text-sm font-medium text-gray-600">zoo_zone</label>
+                    <input type="text" id="editzoo_zone" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
                 </div>
 
                 <div>
