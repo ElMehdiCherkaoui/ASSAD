@@ -27,7 +27,7 @@
 
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Habitats Management</h1>
-            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" id="openHabitatsPopup">
                 + Add New Habitat
             </button>
         </div>
@@ -73,6 +73,116 @@
 
     </main>
 
+
+    <div id="addHabitatsPopup"
+        class="hidden fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-50 overflow-auto h-50">
+        <div class="bg-white rounded-xl p-6 w-full max-w-lg relative">
+            <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">&times;</button>
+
+            <h2 class="text-2xl font-bold mb-4">Add New Habitats</h2>
+
+            <form id="addAnimalForm" class="space-y-4">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="habitatsName" id="habitatsName" required
+                        class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">typeClimat</label>
+                    <input type="text" name="typeClimat" id="typeClimat" required
+                        class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">zoo_zone</label>
+                    <input type="text" name="zoo_zone" id="zoo_zone" required
+                        class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">descriptionHab</label>
+                    <input type="text" name="descriptionHab" id="descriptionHab" required
+                        class="mt-1 block w-full border rounded px-3 py-2">
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button type="button" id="cancelBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
+                        Cancel
+                    </button>
+                    <button type="submit" id="addHabitatsForm"
+                        class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">
+                        Add
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editHabitatsModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 ">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative h-[40em] overflow-auto">
+
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Edit Animal</h2>
+                <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+            </div>
+
+            <form id="editAnimalForm" class="space-y-4">
+
+                <input type="hidden" id="editAniId">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Animal Name</label>
+                    <input type="text" id="editAnimalName"
+                        class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Species</label>
+                    <input type="text" id="editEspece" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Alimentation</label>
+                    <input type="text" id="editAlimentation" class="w-full mt-1 px-4 py-2 border rounded-lg" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Habitat</label>
+                    <select id="editHabitatSelect" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Country of Origin</label>
+                    <input type="text" id="editPaysOrigine" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Image (URL or name)</label>
+                    <input type="text" id="editImage" class="w-full mt-1 px-4 py-2 border rounded-lg">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-600">Description</label>
+                    <textarea id="editDescription" rows="3" class="w-full mt-1 px-4 py-2 border rounded-lg"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4">
+                    <button type="button" id="cancelEditBtn" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
 </body>
 <script src="../../asset/js/habitatsAdminPage.js"></script>
 
