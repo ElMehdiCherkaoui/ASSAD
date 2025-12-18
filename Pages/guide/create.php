@@ -41,7 +41,7 @@
         <p class="text-gray-500 mt-1 mb-6">Fill out the details below to schedule a new visit</p>
 
         <section class="bg-white rounded-xl shadow p-6 max-w-3xl">
-            <form action="create_process.php" method="POST" class="space-y-6">
+            <form class="space-y-6" id="formGuide">
 
                 <div>
                     <label for="title" class="block text-gray-700 font-semibold mb-2">Visit Title</label>
@@ -50,19 +50,14 @@
                         placeholder="African Safari Tour" required>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
                     <div>
                         <label for="date" class="block text-gray-700 font-semibold mb-2">Date</label>
                         <input type="date" id="date" name="date"
                             class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
                             required>
                     </div>
-                    <div>
-                        <label for="time" class="block text-gray-700 font-semibold mb-2">Start Time</label>
-                        <input type="time" id="time" name="time"
-                            class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
-                            required>
-                    </div>
+
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -98,16 +93,8 @@
                         class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
                         required>
                 </div>
-
-                <div>
-                    <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
-                    <textarea id="description" name="description" rows="4"
-                        class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
-                        placeholder="Write a brief description of this visit..." required></textarea>
-                </div>
-
                 <div class="flex justify-end">
-                    <button type="submit"
+                    <button type="submit" id="submitButtonGuide"
                         class="bg-secondary text-black px-6 py-2 rounded font-semibold hover:bg-amber-400">Create
                         Visit</button>
                 </div>
@@ -118,5 +105,6 @@
     </main>
 
 </body>
+<script src="../../asset/js/guideCreatePage.js"></script>
 
 </html>

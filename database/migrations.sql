@@ -278,4 +278,4 @@ VALUES (
         'Active'
     );
 
-select * from Habitats
+select * from visitesGuidees;
