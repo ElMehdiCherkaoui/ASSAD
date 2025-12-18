@@ -44,7 +44,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
+                <tbody class="divide-y divide-gray-200" id="habitatContainer">
                     <tr>
                         <td class="px-6 py-4">1</td>
                         <td class="px-6 py-4">Savanna</td>
@@ -74,5 +74,6 @@
     </main>
 
 </body>
+<script src="../../asset/js/habitatsAdminPage.js"></script>
 
 </html>
