@@ -4,19 +4,19 @@ formGuide.addEventListener("click", (e) => {
 
     const title = document.getElementById("title").value;
     const date = document.getElementById("date").value;
-    const time = document.getElementById("Time").value;
-    const datetime = new date(`${date}T${time}`)
     const duration = document.getElementById("duration").value;
     const language = document.getElementById("language").value;
     const capacity = document.getElementById("capacity").value;
+    const Status = document.getElementById("Status").value;
     const price = document.getElementById("price").value;
 
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("date", datetime);
+    formData.append("date", date);
     formData.append("duration", duration);
     formData.append("language", language);
     formData.append("capacity", capacity);
+    formData.append("Status", Status);
     formData.append("price", price);
 
     fetch("/youcode/ASSAD/Pages/guide/api/createGuide.php", {

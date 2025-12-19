@@ -50,19 +50,19 @@
                         placeholder="African Safari Tour" required>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-1  gap-6">
                     <div>
                         <label for="date" class="block text-gray-700 font-semibold mb-2">Date</label>
                         <input type="date" id="date" name="date"
                             class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
                             required>
                     </div>
-                    <div>
+                    <!-- <div>
                         <label for="date" class="block text-gray-700 font-semibold mb-2">Time</label>
                         <input type="time" id="Time" name="Time"
                             class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
                             required>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -85,7 +85,17 @@
                         </select>
                     </div>
                 </div>
-
+                <div>
+                    <label for="Status" class="block text-gray-700 font-semibold mb-2">Status</label>
+                    <select id="Status" name="Status"
+                        class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                        required>
+                        <option value="">Select a Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Desactive">Desactive</option>
+                    </select>
+                </div>
                 <div>
                     <label for="capacity" class="block text-gray-700 font-semibold mb-2">Maximum Capacity</label>
                     <input type="number" id="capacity" name="capacity" min="1" max="50"
@@ -108,9 +118,11 @@
             </form>
         </section>
 
+
+
     </main>
 
 </body>
-<script src="../../asset/js/guideCreatePage.js"></script>
+<script src="../../asset/js/GuideCreatePage.js"></script>
 
 </html>

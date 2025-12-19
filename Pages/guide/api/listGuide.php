@@ -1,9 +1,24 @@
 <?php
 require_once "../../../config.php";
+session_start();
 
-$sql = "SELECT * FROM visitesGuidees";
+header("Content-Type: application/json");
 
-$result = mysqli_query($conn, $sql);
+
+$id = $_SESSION["user_id"];
+
+
+$sql = "SELECT * FROM visitesGuidees WHERE user_guide_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+
+
+mysqli_stmt_bind_param($stmt, "i", $id);
+
+
+mysqli_stmt_execute($stmt);
+
+
+$result = mysqli_stmt_get_result($stmt);
 
 $Guides = [];
 

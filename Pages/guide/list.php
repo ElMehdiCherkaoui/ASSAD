@@ -96,7 +96,76 @@
                 </table>
             </div>
         </section>
+        <div id="formPopup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-xl shadow p-6 max-w-3xl w-full relative">
+                <input type="hidden" id="ediguiId" name="ediguiId">
 
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Edit Visit Guide</h2>
+                    <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+                </div>
+
+                <!-- Original Form -->
+                <form class="space-y-6" id="formGuide">
+                    <div>
+                        <label for="titles" class="block text-gray-700 font-semibold mb-2">Visit Title</label>
+                        <input type="text" id="titles" name="titles"
+                            class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                            placeholder="African Safari Tour" required>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div>
+                            <label for="date" class="block text-gray-700 font-semibold mb-2">Date</label>
+                            <input type="date" id="date" name="date"
+                                class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="duration" class="block text-gray-700 font-semibold mb-2">Duration
+                                (minutes)</label>
+                            <input type="number" id="duration" name="duration" min="10" max="180"
+                                class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                                required>
+                        </div>
+                        <div>
+                            <label for="language" class="block text-gray-700 font-semibold mb-2">Language</label>
+                            <select id="language" name="language"
+                                class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                                required>
+                                <option value="">Select a language</option>
+                                <option value="English">English</option>
+                                <option value="French">French</option>
+                                <option value="Arabic">Arabic</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="capacity" class="block text-gray-700 font-semibold mb-2">Maximum Capacity</label>
+                        <input type="number" id="capacity" name="capacity" min="1" max="50"
+                            class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="price" class="block text-gray-700 font-semibold mb-2">Price (MAD)</label>
+                        <input type="number" id="price" name="price" min="0"
+                            class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-secondary"
+                            required>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" id="submitButtonGuide"
+                            class="bg-secondary text-black px-6 py-2 rounded font-semibold hover:bg-amber-400">Edit
+                            Visit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
 </body>

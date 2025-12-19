@@ -40,6 +40,7 @@ CREATE TABLE visitesGuidees (
     max_capacity INT NOT NULL,
     duree INT,
     price INT NOT NULL,
+    statut VARCHAR(50) NOT NULL,
     user_guide_id INT,
     FOREIGN KEY (user_guide_id) REFERENCES users (Users_id)
 );
@@ -278,4 +279,4 @@ VALUES (
         'Active'
     );
 
-select * from visitesGuidees;
+select * from visitesGuidees WHERE user_guide_id = 11;

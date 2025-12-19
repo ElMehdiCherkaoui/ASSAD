@@ -26,7 +26,7 @@
         </p>
 
         <div class="mt-6 space-y-3">
-            <a href="login.php" class="block w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900">
+            <a href="../login.php" class="block w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900">
                 Back to Login
             </a>
 
