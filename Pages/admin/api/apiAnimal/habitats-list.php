@@ -8,10 +8,12 @@ $sql = "SELECT
             habitatsName
         FROM Habitats";
 
-$stmt = $pdo->prepare($sql);
+$result = mysqli_query($conn, $sql);
 
-$stmt->execute();
+$Habitats = [];
 
-$Habitats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+while ($row = mysqli_fetch_assoc($result)) {
+    $Habitats[] = $row;
+}
 
 echo json_encode($Habitats);

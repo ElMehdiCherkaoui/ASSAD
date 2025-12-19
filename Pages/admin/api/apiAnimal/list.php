@@ -15,10 +15,12 @@ $sql = "SELECT
         FROM Animal a
         LEFT JOIN Habitats h ON a.Habitat_ID = h.Hab_id";
 
-$stmt = $pdo->prepare($sql);
+$result = mysqli_query($conn, $sql);
 
-$stmt->execute();
+$animals = [];
 
-$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+while ($row = mysqli_fetch_assoc($result)) {
+    $animals[] = $row;
+}
 
 echo json_encode($animals);

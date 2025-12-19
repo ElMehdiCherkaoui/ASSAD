@@ -17,21 +17,23 @@ if (
     exit;
 }
 
-$title = $_POST['title'];
-$date = $_POST['date'];
+$title    = $_POST['title'];
+$date     = $_POST['date'];
 $duration = $_POST['duration'];
 $language = $_POST['language'];
 $capacity = $_POST['capacity'];
-$price = $_POST['price'];
-$id = null;
+$price    = $_POST['price'];
+$id       = null;
 
 $sql = "INSERT INTO visitesGuidees 
 (title, date_time, languages, max_capacity, duree, price, user_guide_id)
 VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-$stmt = $pdo->prepare($sql);
+$stmt = mysqli_prepare($conn, $sql);
 
-$success = $stmt->execute([
+mysqli_stmt_bind_param(
+    $stmt,
+    "sssiddi",
     $title,
     $date,
     $language,
@@ -39,6 +41,8 @@ $success = $stmt->execute([
     $duration,
     $price,
     $id
-]);
+);
+
+$success = mysqli_stmt_execute($stmt);
 
 echo json_encode(["success" => $success]);

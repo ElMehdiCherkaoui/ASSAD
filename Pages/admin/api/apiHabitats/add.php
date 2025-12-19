@@ -14,22 +14,26 @@ if (
     exit;
 }
 
-$Name = $_POST['Name'];
-$type = $_POST['type'];
+$Name        = $_POST['Name'];
+$type        = $_POST['type'];
 $description = $_POST['description'];
-$zone = $_POST['zone'];
+$zone        = $_POST['zone'];
 
 $sql = "INSERT INTO Habitats 
 (habitatsName, typeClimat, descriptionHab, zoo_zone)
 VALUES (?, ?, ?, ?)";
 
-$stmt = $pdo->prepare($sql);
+$stmt = mysqli_prepare($conn, $sql);
 
-$success = $stmt->execute([
+mysqli_stmt_bind_param(
+    $stmt,
+    "ssss",
     $Name,
     $type,
     $description,
     $zone
-]);
+);
+
+$success = mysqli_stmt_execute($stmt);
 
 echo json_encode(["success" => $success]);

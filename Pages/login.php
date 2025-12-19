@@ -13,13 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "All fields are required";
     } else {
 
-        $stmt = $pdo->prepare("
-            SELECT Users_id, userName, userRole, password_hash, userStatus
-            FROM users
-            WHERE userEmail = ?
-        ");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
+        $sql = "SELECT Users_id, userName, userRole, password_hash, userStatus 
+                FROM users 
+                WHERE userEmail = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+        $user = mysqli_fetch_assoc($result);
 
         if (!$user || !password_verify($password, $user["password_hash"])) {
             $error = "Invalid email or password";
@@ -30,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit;
             }
 
-            if ($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled" || $user["userRole"] === "Guide" && $user["userStatus"] === "Disabled") {
+            if (($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled") ||
+                ($user["userRole"] === "Guide" && $user["userStatus"] === "Disabled")) {
                 header("Location: visitsLogged/DesactivePage.php");
                 exit;
             }
@@ -51,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

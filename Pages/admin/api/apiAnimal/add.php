@@ -16,21 +16,23 @@ if (
     exit;
 }
 
-$animalName  = $_POST['animalName'];
-$espece      = $_POST['espèce'];
+$animalName   = $_POST['animalName'];
+$espece       = $_POST['espèce'];
 $alimentation = $_POST['alimentation'];
-$habitatId   = $_POST['Habitat_ID'];
-$paysOrigine = $_POST['paysOrigine'];
-$image       = $_POST['Image'] ?? null;
-$description = $_POST['descriptionCourte'] ?? null;
+$habitatId    = $_POST['Habitat_ID'];
+$paysOrigine  = $_POST['paysOrigine'];
+$image        = $_POST['Image'] ?? null;
+$description  = $_POST['descriptionCourte'] ?? null;
 
 $sql = "INSERT INTO Animal 
 (animalName, espèce, alimentation, Image, paysOrigine, descriptionCourte, Habitat_ID)
 VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-$stmt = $pdo->prepare($sql);
+$stmt = mysqli_prepare($conn, $sql);
 
-$success = $stmt->execute([
+mysqli_stmt_bind_param(
+    $stmt,
+    "ssssssi",
     $animalName,
     $espece,
     $alimentation,
@@ -38,7 +40,9 @@ $success = $stmt->execute([
     $paysOrigine,
     $description,
     $habitatId
-]);
+);
+
+$success = mysqli_stmt_execute($stmt);
 
 echo json_encode([
     "success" => $success

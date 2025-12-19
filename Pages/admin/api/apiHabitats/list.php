@@ -3,13 +3,14 @@ require_once "../../../../config.php";
 
 header("Content-Type: application/json");
 
+$sql = "SELECT * FROM Habitats";
 
-$sql = "select * from Habitats";
+$result = mysqli_query($conn, $sql);
 
-$stmt = $pdo->prepare($sql);
+$habitats = [];
 
-$stmt->execute();
-
-$habitats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+while ($row = mysqli_fetch_assoc($result)) {
+    $habitats[] = $row;
+}
 
 echo json_encode($habitats);

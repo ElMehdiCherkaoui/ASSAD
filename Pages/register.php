@@ -14,23 +14,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "All fields are required";
     } else {
 
-        $check = $pdo->prepare("SELECT Users_id FROM users WHERE userEmail = ?");
-        $check->execute([$email]);
+        $check = mysqli_prepare($conn, "SELECT Users_id FROM users WHERE userEmail = ?");
+        mysqli_stmt_bind_param($check, "s", $email);
+        mysqli_stmt_execute($check);
+        $result = mysqli_stmt_get_result($check);
 
-        if ($check->rowCount() > 0) {
+        if (mysqli_num_rows($result) > 0) {
             $error = "Email already exists";
         } else {
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $status = ($role === "Guide") ? "Pending" : "Active";
 
-            $stmt = $pdo->prepare("
+            $stmt = mysqli_prepare($conn, "
                 INSERT INTO users (userName, userEmail, userRole, password_hash, userStatus)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            $status = ($role === "Guide") ? "Pending" : "Active";
-
-            $stmt->execute([$name, $email, $role, $hashedPassword, $status]);
+            mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $role, $hashedPassword, $status);
+            mysqli_stmt_execute($stmt);
 
             header("Location: login.php");
             exit;

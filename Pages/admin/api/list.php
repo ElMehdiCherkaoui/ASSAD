@@ -11,11 +11,12 @@ $sql = "SELECT
             userStatus
         FROM users";
 
+$result = mysqli_query($conn, $sql);
 
-$stmt = $pdo->prepare($sql);
+$users = [];
 
-$stmt->execute();
-
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+while ($row = mysqli_fetch_assoc($result)) {
+    $users[] = $row;
+}
 
 echo json_encode($users);
