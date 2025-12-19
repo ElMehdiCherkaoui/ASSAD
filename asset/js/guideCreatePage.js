@@ -4,6 +4,8 @@ formGuide.addEventListener("click", (e) => {
 
     const title = document.getElementById("title").value;
     const date = document.getElementById("date").value;
+    const time = document.getElementById("Time").value;
+    const datetime = new date(`${date}T${time}`)
     const duration = document.getElementById("duration").value;
     const language = document.getElementById("language").value;
     const capacity = document.getElementById("capacity").value;
@@ -11,7 +13,7 @@ formGuide.addEventListener("click", (e) => {
 
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("date", date);
+    formData.append("date", datetime);
     formData.append("duration", duration);
     formData.append("language", language);
     formData.append("capacity", capacity);
@@ -31,7 +33,5 @@ formGuide.addEventListener("click", (e) => {
             }
         })
         .catch(err => console.error("Fetch Error:", err));
-
-        
 
 });

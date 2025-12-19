@@ -49,16 +49,18 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date & Time</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Language</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Max Capacity</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Price</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody class="divide-y divide-gray-200" id="guidesContainers">
                         <tr>
                             <td class="px-6 py-4">African Safari Tour</td>
                             <td class="px-6 py-4">2025-01-10 10:00</td>
                             <td class="px-6 py-4">English</td>
                             <td class="px-6 py-4">15</td>
+                            <td class="px-6 py-4">price</td>
                             <td class="px-6 py-4"><span class="text-green-600 font-semibold">Active</span></td>
                             <td class="px-6 py-4 space-x-2">
                                 <button
@@ -98,5 +100,6 @@
     </main>
 
 </body>
+<script src="../../asset/js/listGuidesPage.js"></script>
 
 </html>
