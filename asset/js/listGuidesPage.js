@@ -10,7 +10,7 @@ function displayAllGuides(Guides) {
                             <td class="px-6 py-4">"${g.price}"</td>
                             <td class="px-6 py-4">"${g.statut}"</td>
                             <td class="px-6 py-4 space-x-2">
-                            <button onclick='' class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Etapes</button>
+                            <button onclick='openEtapsGuide(${g.guided_id})' class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Etapes</button>
                                 <button onclick='openEditGuideModal(${JSON.stringify(g)})'
                                     class="px-3 py-1 bg-secondary text-black rounded hover:bg-amber-400">Edit</button>
                                 <button onclick='changeStatus(${JSON.stringify(g)})' class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700">Cancel</button>
@@ -100,4 +100,63 @@ function changeStatus(Guide) {
             }
         })
         .catch(err => console.error("Fetch Error:", err));
+}
+
+
+function openEtapsGuide(visitId) {
+    const stepsModal = document.getElementById("stepsModal");
+    const stepsList = document.getElementById("stepsList");
+
+    stepsModal.classList.remove("hidden");
+    stepsList.innerHTML = "";
+
+    const formData = new FormData();
+    formData.append("id_visit", visitId);
+
+    fetch("/youcode/ASSAD/Pages/guide/api/etapsVisitList.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(e => {
+                const block = `
+                <div class="flex gap-3 p-4 bg-gray-100 rounded-lg">
+                    <div class="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-bold">
+                        ${e.step_order}
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">${e.step_title}</h3>
+                        <p class="text-gray-600 text-sm">${e.step_description}</p>
+                    </div>
+                </div>
+            `;
+                stepsList.innerHTML += block;
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+
+}
+
+function closeStepsModal() {
+    const stepsModal = document.getElementById("stepsModal");
+
+    stepsModal.classList.add("hidden");
+
+
+    document.getElementById("SaveButton").addEventListener("click", () => {
+
+    })
+}
+
+function openAddStepModal() {
+    const addStepModal = document.getElementById("addStepModal");
+    addStepModal.classList.remove("hidden");
+}
+function closeAddStepModal() {
+    const addStepModal = document.getElementById("addStepModal");
+    addStepModal.classList.add("hidden");
 }

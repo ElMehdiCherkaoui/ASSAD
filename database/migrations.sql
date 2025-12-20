@@ -76,207 +76,37 @@ CREATE TABLE userReservations (
 );
 
 INSERT INTO
-    Habitats (
-        habitatsName,
-        typeClimat,
-        descriptionHab,
-        zoo_zone
-    )
-VALUES (
-        'Savannah',
-        'Tropical',
-        'Open grassy plains with scattered trees, ideal for lions, elephants, and giraffes.',
-        'Zone A'
-    ),
-    (
-        'Antarctic Zone',
-        'Polar',
-        'Cold habitat with ice and snow, suitable for penguins and seals.',
-        'Zone B'
-    ),
-    (
-        'Australian Outback',
-        'Arid',
-        'Dry desert-like area for kangaroos, emus, and reptiles.',
-        'Zone C'
-    ),
-    (
-        'Rainforest',
-        'Tropical',
-        'Dense forest with high humidity, home to monkeys, parrots, and snakes.',
-        'Zone D'
-    ),
-    (
-        'Reptile House',
-        'Controlled',
-        'Indoor habitat with temperature and humidity control for snakes, lizards, and turtles.',
-        'Zone E'
-    );
-
-INSERT INTO
-    Animal (
-        animalName,
-        espèce,
-        alimentation,
-        Image,
-        paysOrigine,
-        descriptionCourte,
-        Habitat_ID
-    )
-VALUES (
-        'Lion',
-        'Mammal',
-        'Carnivore',
-        'lion.jpg',
-        'Kenya',
-        'King of the jungle',
-        1
-    ),
-    (
-        'Penguin',
-        'Bird',
-        'Carnivore',
-        'penguin.jpg',
-        'Antarctica',
-        'Cute swimming bird',
-        2
-    ),
-    (
-        'Elephant',
-        'Mammal',
-        'Herbivore',
-        'elephant.jpg',
-        'India',
-        'Largest land animal',
-        1
-    ),
-    (
-        'Kangaroo',
-        'Mammal',
-        'Herbivore',
-        'kangaroo.jpg',
-        'Australia',
-        'Jumps high',
-        3
-    ),
-    (
-        'Cobra',
-        'Reptile',
-        'Carnivore',
-        'cobra.jpg',
-        'India',
-        'Venomous snake',
-        4
-    );
-
-INSERT INTO
-
-INSERT INTO
-    guidedTours (
-        title,
-        date_time,
-        languages,
-        max_capacity,
-        price,
-        user_guide_id
-    )
-VALUES (
-        'Atlas Lion Experience',
-        '2025-06-20 10:00:00',
-        'English, French',
-        10,
-        50,
-        2
-    ),
-    (
-        'African Safari Adventure',
-        '2025-06-21 14:00:00',
-        'English',
-        15,
-        75,
-        2
-    );
-
-INSERT INTO
-    tourSteps (
+    etapesvisite (
         step_title,
+        step_description,
         step_order,
         guid_tour_id
     )
-VALUES ('Lion Habitat', 1, 1),
-    ('Savanna Exploration', 2, 1),
-    ('Elephant Zone', 1, 2),
-    ('Giraffe Zone', 2, 2),
-    ('Rainforest Walk', 3, 2);
-
-INSERT INTO
-    reservations (
-        tour_id_reservation_fk,
-        user_id_reservation_fk,
-        number_of_people,
-        reservation_date
-    )
 VALUES (
-        1,
-        3,
-        2,
-        '2025-06-10 09:00:00'
-    ),
-    (
-        2,
-        3,
-        1,
-        '2025-06-11 12:00:00'
-    );
-
-INSERT INTO
-    userComments (
-        tours_id_comment_fk,
-        user_id_comment_fk,
-        rating,
-        text
-    )
-VALUES (
-        1,
-        3,
+        'Zone Mammifères Asiatiques',
+        'Découverte des mammifères d’Asie',
         5,
-        'Amazing experience with the Atlas Lion!'
+        4
     ),
     (
+        'Zone Oiseaux Exotiques',
+        'Observation des oiseaux rares',
         2,
+        4
+    ),
+    (
+        'Zone Singes',
+        'Interaction et observation des singes',
         3,
+        1
+    ),
+    (
+        'Zone Crocodiles et Hippopotames',
+        'Zone aquatique avec crocodiles et hippopotames',
         4,
-        'Loved the safari, but it was a bit crowded.'
+        4
     );
 
-INSERT INTO
-    users (
-        userName,
-        userEmail,
-        userRole,
-        password_hash,
-        userStatus
-    )
-VALUES (
-        'Admin',
-        'admin@assad.com',
-        'Admin',
-        '$2y$10$i6eS8Vz1f3JcrE/RD48z4OQvo8wTJpjbqtJ4mvJyD.tWFygC2j2Z6', --AdminMestry123
-        'Active'
-    ),
-    (
-        'Mehdi Cherkaoui',
-        'MehdiCherkaoui@youcode.com',
-        'Guide',
-        '$2y$10$rCyjRVyo5b00HXr1ILr3/OmBOwp3y0Tg4388LDUj7sV7ZzgX.sNG.', --GuideMestry123
-        'Active'
-    ),
-    (
-        'Mestry',
-        'Mestry@gmail.com',
-        'Visiteur',
-        '$2y$10$sALOlus81zV7tQCTWlRadO.ExPJRsuaOGy9fbhACy7NgHh0AMaoWO', --  
-        'Active'
-    );
+select * from visitesGuidees;
 
-select * from visitesGuidees WHERE user_guide_id = 11;
+SELECT * FROM etapesvisite WHERE guid_tour_id = 4 ORDER BY step_order;
