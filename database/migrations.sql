@@ -109,4 +109,4 @@ VALUES (
 
 select * from visitesGuidees;
 
-SELECT * FROM etapesvisite WHERE guid_tour_id = 4 ORDER BY step_order;
+SELECT * FROM etapesvisite;

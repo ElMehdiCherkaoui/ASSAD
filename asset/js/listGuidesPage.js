@@ -109,7 +109,7 @@ function openEtapsGuide(visitId) {
 
     stepsModal.classList.remove("hidden");
     stepsList.innerHTML = "";
-
+    document.getElementById("edietapId").value = visitId;
     const formData = new FormData();
     formData.append("id_visit", visitId);
 
@@ -147,14 +147,40 @@ function closeStepsModal() {
     stepsModal.classList.add("hidden");
 
 
-    document.getElementById("SaveButton").addEventListener("click", () => {
 
-    })
 }
 
 function openAddStepModal() {
     const addStepModal = document.getElementById("addStepModal");
     addStepModal.classList.remove("hidden");
+   document.getElementById("SaveButton").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const id = parseInt(document.getElementById("edietapId").value);
+    const stepOrder = parseInt(document.getElementById("stepOrder").value);
+    const stepTitle = document.getElementById("stepTitle").value.trim();
+    const stepDescription = document.getElementById("stepDescription").value.trim();
+
+    const formData = new FormData();
+    formData.append("IdGuideNeeded", id);
+    formData.append("stepOrder", stepOrder);
+    formData.append("stepTitle", stepTitle);
+    formData.append("stepDescription", stepDescription);
+
+    fetch("/youcode/ASSAD/Pages/guide/api/addStepGuide.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(result => {
+        if (result.success) {
+            closeAddStepModal();
+            openEtapsGuide(id);
+        } 
+    })
+    .catch(err => console.error("Fetch Error:", err));
+});
+
 }
 function closeAddStepModal() {
     const addStepModal = document.getElementById("addStepModal");

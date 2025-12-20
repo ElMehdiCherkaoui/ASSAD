@@ -171,7 +171,7 @@
     <div id="stepsModal" class="hidden fixed inset-0 bg-black bg-opacity-50  flex items-center justify-center z-50">
 
         <div class="bg-white w-full max-w-lg rounded-xl shadow-lg p-6">
-
+            <input type="hidden" id="edietapId" name="edietapId">
             <!-- Header -->
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold">Guide Visit Steps</h2>
@@ -216,7 +216,7 @@
                 <!-- Step Order -->
                 <div>
                     <label class="block text-sm font-medium">Step Order</label>
-                    <input type="number" min="1"
+                    <input type="number" min="1" id="stepOrder"
                         class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="1"
                         required />
                 </div>
@@ -224,7 +224,7 @@
                 <!-- Step Title -->
                 <div>
                     <label class="block text-sm font-medium">Step Title</label>
-                    <input type="text" maxlength="100"
+                    <input type="text" maxlength="100" id="stepTitle"
                         class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Arrival"
                         required />
                 </div>
@@ -232,7 +232,8 @@
                 <!-- Step Description -->
                 <div>
                     <label class="block text-sm font-medium">Description</label>
-                    <textarea class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500" rows="3"
+                    <textarea id="stepDescription"
+                        class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500" rows="3"
                         placeholder="Explain what happens in this step"></textarea>
                 </div>
 
