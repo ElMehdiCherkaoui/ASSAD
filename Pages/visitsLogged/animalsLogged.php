@@ -52,23 +52,21 @@
     <!-- Filters -->
     <section class="max-w-7xl mx-auto px-6 py-10">
         <div class="flex flex-col md:flex-row gap-4 mb-8">
-            <input type="text" placeholder="Search by name..." class="flex-1 p-3 rounded-lg border border-gray-300">
-            <select class="p-3 rounded-lg border border-gray-300">
-                <option>All Habitats</option>
-                <option>Savannah</option>
-                <option>Forest</option>
-                <option>Desert</option>
+            <input type="text" id="searchName" placeholder="Search by name..."
+                class="flex-1 p-3 rounded-lg border border-gray-300">
+
+            <select id="habitatFilter" class="p-3 rounded-lg border border-gray-300">
+                <option value="">All Habitats</option>
             </select>
-            <select class="p-3 rounded-lg border border-gray-300">
-                <option>All Countries</option>
-                <option>Morocco</option>
-                <option>Kenya</option>
-                <option>South Africa</option>
+
+            <select id="countryFilter" class="p-3 rounded-lg border border-gray-300">
+                <option value="">All Countries</option>
             </select>
         </div>
 
+
         <!-- Animal Cards Grid -->
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8" id="animalContainer">
             <!-- Example Animal Card -->
             <div class="bg-white rounded-xl shadow overflow-hidden">
                 <img src="../assets/animals/lion.jpg" alt="Atlas Lion" class="w-full h-48 object-cover">
@@ -113,5 +111,6 @@
     </footer>
 
 </body>
+<script src="../../asset/js/AnimalVisitPage.js"></script>
 
 </html>

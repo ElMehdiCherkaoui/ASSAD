@@ -24,10 +24,11 @@
     <header class="bg-primary text-white py-4 px-6 flex justify-between items-center">
         <span class="text-xl font-bold">ASSAD Zoo</span>
         <nav class="space-x-4">
-            <a href="../index.php" class="hover:text-secondary">Home</a>
-            <a href="list.php" class="hover:text-secondary">Visits</a>
+            <a href="homeLogged.php" class="hover:text-secondary">Home</a>
+            <a href="animalsLogged.php" class="hover:text-secondary">Animals</a>
+            <a href="create.php" class="hover:text-secondary">Guided Visits</a>
             <a href="my-reservations.php" class="hover:text-secondary">My Reservations</a>
-            <a href="../logout.php" class="hover:text-red-400">Logout</a>
+            <a href="logout.php" class="hover:text-red-400 font-semibold">Logout</a>
         </nav>
     </header>
 

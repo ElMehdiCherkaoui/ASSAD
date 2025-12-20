@@ -30,11 +30,11 @@
             </div>
 
             <nav class="space-x-6 text-sm font-medium">
-                <a href="../index-logged.php" class="hover:text-secondary">Home</a>
-                <a href="../animals/list-logged.php" class="hover:text-secondary">Animals</a>
-                <a href="list-logged.php" class="hover:text-secondary">Guided Visits</a>
+                <a href="homeLogged.php" class="hover:text-secondary">Home</a>
+                <a href="animalsLogged.php" class="hover:text-secondary">Animals</a>
+                <a href="create.php" class="hover:text-secondary">Guided Visits</a>
                 <a href="my-reservations.php" class="hover:text-secondary">My Reservations</a>
-                <a href="../logout.php" class="hover:text-red-400 font-semibold">Logout</a>
+                <a href="logout.php" class="hover:text-red-400 font-semibold">Logout</a>
             </nav>
         </div>
     </header>
