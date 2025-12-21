@@ -4,7 +4,7 @@
     Explore African Animals
 </h1>
 
-<div class="grid md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-8" id="animalContainer">
 
     <div class="bg-white rounded-xl shadow overflow-hidden">
         <img src="https://source.unsplash.com/400x300/?lion" class="w-full h-48 object-cover">
@@ -13,9 +13,6 @@
             <p class="text-gray-600 text-sm mt-2">
                 Native to North Africa, symbol of strength.
             </p>
-            <a href="animal-show.php" class="inline-block mt-4 text-primary font-semibold hover:underline">
-                View details →
-            </a>
         </div>
     </div>
 
@@ -30,5 +27,5 @@
     </div>
 
 </div>
-
+<script src="../../asset/js/animalNotLoggedShow.js"></script>
 <?php include 'layout/footer.php'; ?>

@@ -105,7 +105,6 @@
                     <button id="closeEditModal" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
                 </div>
 
-                <!-- Original Form -->
                 <form class="space-y-6" id="formGuide">
                     <div>
                         <label for="titles" class="block text-gray-700 font-semibold mb-2">Visit Title</label>
@@ -167,24 +166,20 @@
             </div>
         </div>
     </main>
-    <!-- Steps Modal -->
     <div id="stepsModal" class="hidden fixed inset-0 bg-black bg-opacity-50  flex items-center justify-center z-50">
 
         <div class="bg-white w-full max-w-lg rounded-xl shadow-lg p-6">
             <input type="hidden" id="edietapId" name="edietapId">
-            <!-- Header -->
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold">Guide Visit Steps</h2>
                 <button onclick="closeStepsModal()" class="text-gray-500 hover:text-black text-2xl">&times;</button>
             </div>
 
-            <!-- Add Step -->
             <button onclick="openAddStepModal()"
                 class="mb-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
                 ➕ Add new étape
             </button>
 
-            <!-- Steps -->
             <div id="stepsList" class="space-y-3 overflow-auto max-h-[30em]">
                 <div class="flex gap-3 p-4 bg-gray-100 rounded-lg">
                     <div
@@ -204,7 +199,6 @@
 
         </div>
     </div>
-    <!-- Add Step Modal -->
     <div id="addStepModal" class="hidden fixed inset-0 bg-black bg-opacity-50  flex items-center justify-center z-50">
 
         <div class="bg-white w-full max-w-md rounded-xl shadow-lg p-6">
@@ -213,7 +207,6 @@
 
             <form id="addStepForm" class="space-y-4">
 
-                <!-- Step Order -->
                 <div>
                     <label class="block text-sm font-medium">Step Order</label>
                     <input type="number" min="1" id="stepOrder"
@@ -221,7 +214,6 @@
                         required />
                 </div>
 
-                <!-- Step Title -->
                 <div>
                     <label class="block text-sm font-medium">Step Title</label>
                     <input type="text" maxlength="100" id="stepTitle"
@@ -229,7 +221,6 @@
                         required />
                 </div>
 
-                <!-- Step Description -->
                 <div>
                     <label class="block text-sm font-medium">Description</label>
                     <textarea id="stepDescription"
@@ -237,7 +228,6 @@
                         placeholder="Explain what happens in this step"></textarea>
                 </div>
 
-                <!-- Buttons -->
                 <div class="flex justify-end gap-2">
                     <button type="button" onclick="closeAddStepModal()" class="px-4 py-2 bg-gray-200 rounded-lg">
                         Cancel

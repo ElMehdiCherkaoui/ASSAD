@@ -15,7 +15,7 @@ function disableUser(id) {
 
 function activateUser(id) {
     if (!confirm("Activate this user?")) return;
-
+    
     fetch(`/youcode/ASSAD/Pages/admin/api/activate.php?id=${id}`)
         .then(res => res.json())
         .then(() => loadUsers());

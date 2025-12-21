@@ -5,6 +5,7 @@ function displayAllAnimals(Animals) {
     const animalContainer = document.getElementById("animalContainer");
     animalContainer.innerHTML = "";
     Animals.forEach((a) => {
+
         const block = `
             <div class="bg-white rounded-xl shadow overflow-hidden">
                 <img src="${a.Image}" class="w-full h-48 object-cover">
@@ -15,6 +16,7 @@ function displayAllAnimals(Animals) {
             </div>
         `
         animalContainer.innerHTML += block;
+
     });
 
 }
@@ -80,7 +82,7 @@ function filterAnimals() {
 
     displayAllAnimals(result);
 }
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded",  () => {
     document.getElementById("searchName").addEventListener("input", filterAnimals);
     document.getElementById("habitatFilter").addEventListener("change", filterAnimals);
     document.getElementById("countryFilter").addEventListener("change", filterAnimals);

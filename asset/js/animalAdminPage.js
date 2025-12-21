@@ -59,6 +59,18 @@ fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
             option.value = h.Hab_id;
             option.textContent = h.habitatsName;
             habitatSelect.appendChild(option);
+        });
+    })
+    .catch(err => console.error("Error fetching habitats:", err));
+
+
+fetch("/youcode/ASSAD/Pages/admin/api/apiAnimal/habitats-list.php")
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(h => {
+            const option = document.createElement('option');
+            option.value = h.Hab_id;
+            option.textContent = h.habitatsName;
             editHabitatSelect.appendChild(option);
         });
     })

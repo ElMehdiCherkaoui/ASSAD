@@ -65,10 +65,10 @@
                             class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-secondary focus:border-transparent">
                     </div>
                     <input type="hidden" name="visit_id" value="1">
-                    <button type="submit"
+                    <a href="../register.php"
                         class="bg-secondary text-black px-6 py-3 rounded-lg font-semibold hover:bg-amber-400">
                         Book Now
-                    </button>
+                    </a>
                 </form>
             </div>
 

@@ -51,7 +51,7 @@
                         <th class="px-4 py-2 text-left">Status</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-800">
+                <tbody class="text-gray-800" id="UserContainer">
                     <tr class="border-b">
                         <td class="px-4 py-2">John Doe</td>
                         <td class="px-4 py-2">African Safari Tour</td>
@@ -75,5 +75,6 @@
     </main>
 
 </body>
+<script src="../../asset/js/bookingGuide.js"></script>
 
 </html>

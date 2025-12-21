@@ -3,42 +3,37 @@ require_once "../config.php";
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $name = trim($_POST["name"]);
-    $email = trim($_POST["email"]);
-    $role = $_POST["role"];
-    $password = $_POST["password"];
+$name = trim($_POST["name"]);
+$email = trim($_POST["email"]);
+$role = $_POST["role"];
+$password = $_POST["password"];
 
-    if (empty($name) || empty($email) || empty($role) || empty($password)) {
-        $error = "All fields are required";
-    } else {
 
-        $check = mysqli_prepare($conn, "SELECT Users_id FROM users WHERE userEmail = ?");
-        mysqli_stmt_bind_param($check, "s", $email);
-        mysqli_stmt_execute($check);
-        $result = mysqli_stmt_get_result($check);
+$check = mysqli_prepare($conn, "SELECT Users_id FROM users WHERE userEmail = ?");
+mysqli_stmt_bind_param($check, "s", $email);
+mysqli_stmt_execute($check);
+$result = mysqli_stmt_get_result($check);
 
-        if (mysqli_num_rows($result) > 0) {
-            $error = "Email already exists";
-        } else {
+if (mysqli_num_rows($result) > 0) {
+    $error = "Email already exists";
+} else {
 
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $status = ($role === "Guide") ? "Pending" : "Active";
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $status = ($role === "Guide") ? "Pending" : "Active";
 
-            $stmt = mysqli_prepare($conn, "
+    $stmt = mysqli_prepare($conn, "
                 INSERT INTO users (userName, userEmail, userRole, password_hash, userStatus)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $role, $hashedPassword, $status);
-            mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $role, $hashedPassword, $status);
+    mysqli_stmt_execute($stmt);
 
-            header("Location: login.php");
-            exit;
-        }
-    }
+    header("Location: login.php");
+    exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -51,17 +46,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    jungle: '#0f3d2e',
-                    gold: '#fbbf24',
-                    sand: '#f8fafc'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jungle: '#0f3d2e',
+                        gold: '#fbbf24',
+                        sand: '#f8fafc'
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
 
@@ -84,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </h2>
 
             <?php if (!empty($error)): ?>
-            <p class="text-red-600 text-center mt-4"><?= $error ?></p>
+                <p class="text-red-600 text-center mt-4"><?= $error ?></p>
             <?php endif; ?>
 
             <form method="POST" class="mt-8 space-y-5">

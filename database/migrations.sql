@@ -59,7 +59,7 @@ CREATE TABLE userComments (
     tours_id_comment_fk INT,
     user_id_comment_fk INT,
     rating INT,
-    text TEXT,
+    text_desc TEXT,
     date_commentaire DATE DEFAULT CURRENT_DATE,
     FOREIGN KEY (user_id_comment_fk) REFERENCES users (Users_id),
     FOREIGN KEY (tours_id_comment_fk) REFERENCES visitesGuidees (guided_id)
@@ -107,6 +107,9 @@ VALUES (
         4
     );
 
-select * from visitesGuidees;
+select * from users;
 
-SELECT * FROM etapesvisite;
+SELECT * FROM userComments;
+
+
+SELECT paysOrigine AS country, COUNT(*) AS total FROM Animal GROUP BY paysOrigine;

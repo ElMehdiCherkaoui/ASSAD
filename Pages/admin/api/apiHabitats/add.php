@@ -3,16 +3,6 @@ require_once "../../../../config.php";
 
 header("Content-Type: application/json");
 
-if (
-    empty($_POST['Name']) ||
-    empty($_POST['type'])
-) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Missing required fields"
-    ]);
-    exit;
-}
 
 $Name        = $_POST['Name'];
 $type        = $_POST['type'];

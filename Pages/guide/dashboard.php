@@ -40,27 +40,7 @@
         <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
         <p class="text-gray-500 mt-1">Welcome back, Guide John Doe</p>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-            <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Upcoming Visits</p>
-                <p class="text-3xl font-bold text-primary mt-2">5</p>
-            </div>
 
-            <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Total Reservations</p>
-                <p class="text-3xl font-bold text-secondary mt-2">42</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Visits Created</p>
-                <p class="text-3xl font-bold text-primary mt-2">12</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Capacity Left</p>
-                <p class="text-3xl font-bold text-secondary mt-2">120</p>
-            </div>
-        </section>
 
         <section class="bg-white rounded-xl shadow p-6 mt-10">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Recent Bookings</h2>
@@ -75,7 +55,7 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody class="divide-y divide-gray-200" id="UserReservedContainer">
                         <tr>
                             <td class="px-6 py-4">Alice Smith</td>
                             <td class="px-6 py-4">African Safari Tour</td>
@@ -105,5 +85,6 @@
     </main>
 
 </body>
+<script src="../../asset/js/UserGuideReservation.js"></script>
 
 </html>

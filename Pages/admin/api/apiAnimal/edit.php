@@ -2,20 +2,6 @@
 require_once "../../../../config.php";
 header("Content-Type: application/json");
 
-if (
-    empty($_POST['Ani_id']) ||
-    empty($_POST['animalName']) ||
-    empty($_POST['espèce']) ||
-    empty($_POST['alimentation']) ||
-    empty($_POST['Habitat_ID']) ||
-    empty($_POST['paysOrigine'])
-) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Missing required fields"
-    ]);
-    exit;
-}
 
 $animalId     = $_POST['Ani_id'];
 $animalName   = $_POST['animalName'];

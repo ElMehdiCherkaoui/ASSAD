@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Header -->
     <header class="bg-primary text-white">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -39,7 +38,6 @@
         </div>
     </header>
 
-    <!-- Page Title -->
     <section class="bg-green-100 py-16">
         <div class="max-w-5xl mx-auto text-center px-6">
             <h1 class="text-4xl font-bold text-primary mb-4">Guided Visits</h1>
@@ -49,11 +47,9 @@
         </div>
     </section>
 
-    <!-- Visits Grid -->
     <section class="max-w-7xl mx-auto px-6 py-10">
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8" id="GuidesBookContainner">
 
-            <!-- Example Visit Card -->
             <div class="bg-white rounded-xl shadow overflow-hidden">
                 <img src="../assets/visits/lion-tour.jpg" alt="Atlas Lion Tour" class="w-full h-48 object-cover">
                 <div class="p-6 text-center">
@@ -90,7 +86,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-6 mt-16">
         <div class="text-center text-sm">
             © 2025 ASSAD Virtual Zoo — Africa Cup of Nations Morocco
@@ -98,5 +93,6 @@
     </footer>
 
 </body>
+<script src="../../asset/js/guideVisitsPage.js"></script>
 
 </html>

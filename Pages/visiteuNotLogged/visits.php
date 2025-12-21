@@ -4,7 +4,7 @@
     Guided Virtual Visits
 </h1>
 
-<div class="space-y-6 max-w-4xl mx-auto">
+<div class="space-y-6 max-w-4xl mx-auto" id="GuidesContainer">
 
     <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
         <div>
@@ -20,5 +20,5 @@
     </div>
 
 </div>
-
+<script src="../../asset/js/allGuideVisitsNotLogged.js"></script>
 <?php include 'layout/footer.php'; ?>

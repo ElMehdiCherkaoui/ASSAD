@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Header -->
     <header class="bg-primary text-white">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -39,8 +38,8 @@
         </div>
     </header>
 
-    <!-- Page Title -->
     <section class="bg-green-100 py-16">
+
         <div class="max-w-5xl mx-auto text-center px-6">
             <h1 class="text-4xl font-bold text-primary mb-4">Explore African Animals</h1>
             <p class="text-gray-700 mb-6">
@@ -49,7 +48,6 @@
         </div>
     </section>
 
-    <!-- Filters -->
     <section class="max-w-7xl mx-auto px-6 py-10">
         <div class="flex flex-col md:flex-row gap-4 mb-8">
             <input type="text" id="searchName" placeholder="Search by name..."
@@ -65,9 +63,7 @@
         </div>
 
 
-        <!-- Animal Cards Grid -->
         <div class="grid md:grid-cols-3 gap-8" id="animalContainer">
-            <!-- Example Animal Card -->
             <div class="bg-white rounded-xl shadow overflow-hidden">
                 <img src="../assets/animals/lion.jpg" alt="Atlas Lion" class="w-full h-48 object-cover">
                 <div class="p-6 text-center">
@@ -103,7 +99,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-6 mt-16">
         <div class="text-center text-sm">
             © 2025 ASSAD Virtual Zoo — Africa Cup of Nations Morocco

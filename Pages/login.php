@@ -4,54 +4,49 @@ session_start();
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $email = trim($_POST["email"]);
-    $password = $_POST["password"];
+$email = trim($_POST["email"]);
+$password = $_POST["password"];
 
-    if (empty($email) || empty($password)) {
-        $error = "All fields are required";
-    } else {
 
-        $sql = "SELECT Users_id, userName, userRole, password_hash, userStatus 
+$sql = "SELECT Users_id, userName, userRole, password_hash, userStatus 
                 FROM users 
                 WHERE userEmail = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
 
-        $result = mysqli_stmt_get_result($stmt);
-        $user = mysqli_fetch_assoc($result);
+$result = mysqli_stmt_get_result($stmt);
+$user = mysqli_fetch_assoc($result);
 
-        if (!$user || !password_verify($password, $user["password_hash"])) {
-            $error = "Invalid email or password";
-        } else {
+if (!$user || !password_verify($password, $user["password_hash"])) {
+    $error = "Invalid email or password";
+} else {
 
-            if ($user["userRole"] === "Guide" && $user["userStatus"] === "Pending") {
-                header("Location: guide/guide-pending.php");
-                exit;
-            }
-
-            if (($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled") ||
-                ($user["userRole"] === "Guide" && $user["userStatus"] === "Disabled")) {
-                header("Location: visitsLogged/DesactivePage.php");
-                exit;
-            }
-
-            $_SESSION["user_id"] = $user["Users_id"];
-            $_SESSION["user_name"] = $user["userName"];
-            $_SESSION["user_role"] = $user["userRole"];
-
-            if ($user["userRole"] === "Admin") {
-                header("Location: admin/dashboard.php");
-            } elseif ($user["userRole"] === "Guide") {
-                header("Location: guide/dashboard.php");
-            } else {
-                header("Location: visitsLogged/animalsLogged.php");
-            }
-            exit;
-        }
+    if ($user["userRole"] === "Guide" && $user["userStatus"] === "Pending") {
+        header("Location: guide/guide-pending.php");
+        exit;
     }
+
+    if (($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled") ||
+        ($user["userRole"] === "Guide" && $user["userStatus"] === "Disabled")
+    ) {
+        header("Location: visitsLogged/DesactivePage.php");
+        exit;
+    }
+
+    $_SESSION["user_id"] = $user["Users_id"];
+    $_SESSION["user_name"] = $user["userName"];
+    $_SESSION["user_role"] = $user["userRole"];
+
+    if ($user["userRole"] === "Admin") {
+        header("Location: admin/dashboard.php");
+    } elseif ($user["userRole"] === "Guide") {
+        header("Location: guide/dashboard.php");
+    } else {
+        header("Location: visitsLogged/animalsLogged.php");
+    }
+    exit;
 }
 ?>
 
@@ -67,17 +62,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    jungle: '#0f3d2e',
-                    gold: '#fbbf24',
-                    sand: '#f8fafc'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jungle: '#0f3d2e',
+                        gold: '#fbbf24',
+                        sand: '#f8fafc'
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
 
@@ -119,9 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <form class="mt-8 space-y-5" method="POST">
                 <?php if (!empty($error)) : ?>
-                <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
-                    <?php echo $error; ?>
-                </div>
+                    <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
+                        <?php echo $error; ?>
+                    </div>
                 <?php endif; ?>
 
                 <div>

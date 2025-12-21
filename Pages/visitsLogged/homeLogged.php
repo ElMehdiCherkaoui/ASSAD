@@ -22,7 +22,6 @@
 
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Header -->
     <header class="bg-primary text-white">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -44,7 +43,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="bg-green-100 py-24">
         <div class="max-w-5xl mx-auto text-center px-6">
             <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
@@ -69,7 +67,6 @@
         </div>
     </section>
 
-    <!-- Highlights Section -->
     <main class="max-w-7xl mx-auto px-6 py-20">
         <h2 class="text-3xl font-bold text-center mb-12">
             Discover the ASSAD Experience
@@ -99,7 +96,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-6">
         <div class="text-center text-sm">
             © 2025 ASSAD Virtual Zoo — Africa Cup of Nations Morocco

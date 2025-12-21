@@ -3,22 +3,6 @@ require_once "../../../config.php";
 header("Content-Type: application/json");
 session_start();
 
-if (
-    empty($_POST['title']) ||
-    empty($_POST['date']) ||
-    empty($_POST['duration']) ||
-    empty($_POST['language']) ||
-    empty($_POST['capacity']) ||
-    empty($_POST['price']) ||
-    empty($_POST['Status'])
-) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Missing required fields"
-    ]);
-    exit;
-}
-
 $title    = $_POST['title'];
 $date     = $_POST['date'];
 $duration = $_POST['duration'];

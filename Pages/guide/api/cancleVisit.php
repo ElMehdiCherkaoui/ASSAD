@@ -2,16 +2,7 @@
 require_once "../../../config.php";
 
 header("Content-Type: application/json");
-if (
-    empty($_POST['status']) ||
-    empty($_POST['ediguiId']) 
-) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Missing required fields"
-    ]);
-    exit;
-}
+
 $status    = $_POST['status'];
 $id       = $_POST['ediguiId'];
 $sql = "UPDATE visitesGuidees SET

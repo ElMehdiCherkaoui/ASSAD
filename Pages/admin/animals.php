@@ -209,6 +209,6 @@
 
 </body>
 
-<script src="../../asset/js/animalAdminPage.js"></script>
+<script src="../../asset/js/AnimalAdminPage.js"></script>
 
 </html>
