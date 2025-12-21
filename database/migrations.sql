@@ -1,5 +1,4 @@
 -- Active: 1765134969045@@localhost@3306@assad
-CREATE DATABASE IF NOT EXISTS assad;
 
 USE assad;
 
