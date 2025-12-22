@@ -1,56 +1,3 @@
-<?php
-require_once "../config.php";
-session_start();
-
-$error = "";
-
-
-$email = trim($_POST["email"]);
-$password = $_POST["password"];
-
-
-$sql = "SELECT Users_id, userName, userRole, password_hash, userStatus 
-                FROM users 
-                WHERE userEmail = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
-
-$result = mysqli_stmt_get_result($stmt);
-$user = mysqli_fetch_assoc($result);
-
-if (!$user || !password_verify($password, $user["password_hash"])) {
-    $error = "Invalid email or password";
-} else {
-
-    if ($user["userRole"] === "Guide" && $user["userStatus"] === "Pending") {
-        header("Location: guide/guide-pending.php");
-        exit;
-    }
-
-    if (($user["userRole"] === "Visitor" && $user["userStatus"] === "Disabled") ||
-        ($user["userRole"] === "Guide" && $user["userStatus"] === "Disabled")
-    ) {
-        header("Location: visitsLogged/DesactivePage.php");
-        exit;
-    }
-
-    $_SESSION["user_id"] = $user["Users_id"];
-    $_SESSION["user_name"] = $user["userName"];
-    $_SESSION["user_role"] = $user["userRole"];
-
-    if ($user["userRole"] === "Admin") {
-        header("Location: admin/dashboard.php");
-    } elseif ($user["userRole"] === "Guide") {
-        header("Location: guide/dashboard.php");
-    } else {
-        header("Location: visitsLogged/animalsLogged.php");
-    }
-    exit;
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,17 +9,17 @@ if (!$user || !password_verify($password, $user["password_hash"])) {
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        jungle: '#0f3d2e',
-                        gold: '#fbbf24',
-                        sand: '#f8fafc'
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    jungle: '#0f3d2e',
+                    gold: '#fbbf24',
+                    sand: '#f8fafc'
                 }
             }
         }
+    }
     </script>
 </head>
 
@@ -112,11 +59,11 @@ if (!$user || !password_verify($password, $user["password_hash"])) {
                 Access your ASSAD account
             </p>
 
-            <form class="mt-8 space-y-5" method="POST">
+            <form class="mt-8 space-y-5" method="POST" action="loginProcess.php">
                 <?php if (!empty($error)) : ?>
-                    <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
-                        <?php echo $error; ?>
-                    </div>
+                <div class="bg-red-100 text-red-700 border border-red-400 p-3 rounded mb-4">
+                    <?php echo $error; ?>
+                </div>
                 <?php endif; ?>
 
                 <div>
@@ -141,12 +88,12 @@ if (!$user || !password_verify($password, $user["password_hash"])) {
                     </a>
                 </div>
 
-                <button
+                <button type="submit"
                     class="w-full bg-jungle text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition">
                     Login
                 </button>
-
             </form>
+
 
 
             <p class="text-center text-sm text-gray-500 mt-6">
